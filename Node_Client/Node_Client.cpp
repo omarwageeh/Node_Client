@@ -8,15 +8,16 @@ using namespace std;
 
 int main()
 {
-	MyServerConnection *connection = new MyServerConnection();
-	MyNodeDataHandler *nodeData =  new MyNodeDataHandler(*connection);
+	MyServerConnection connection = *new MyServerConnection();
+	MyNodeDataHandler nodeData =  *new MyNodeDataHandler(connection);
 	while (true) {
 		vector<NodeReading> buffer(5);
 		for (int i = 0; i < 5; i++) {
-			NodeReading buffer = nodeData->getReading();
-			cout << buffer.reading<< "      " << buffer.timeStamp << endl;
+			buffer[i] = nodeData.getReading();
 		}
-		_sleep(5000);
+		for (auto e : buffer) {
+			cout << e.reading << "      " << e.timeStamp << endl;
+		}
 	}
 	return 0;
 }

@@ -5,8 +5,9 @@
 
 #include <iostream>
 #include <vector>
-#include "Handlers/MyNodeDataHandler.cpp"
+#include "Handlers/MyNodeDataHandler.h"
 #include "Models/NodeReading.h"
+#include "Connections/MyServerConnection.h"
 
 
 // TODO: Reference additional headers your program requires here.

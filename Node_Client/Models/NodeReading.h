@@ -7,5 +7,8 @@ public:
 	float reading;
 	std::string timeStamp;
 	NodeReading() = default;
-	NodeReading(float reading, std::string timeStamp);
+	NodeReading(float reading, time_t timeStamp) {
+		this->reading = reading;
+		this->timeStamp = timeStamp;
+	}
 };
