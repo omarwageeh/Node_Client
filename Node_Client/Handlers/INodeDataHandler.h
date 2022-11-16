@@ -1,6 +1,6 @@
 #pragma once
 #include "../Models/NodeReading.h"
-class NodeDataHandler {
+__interface INodeDataHandler {
 public:
 	virtual NodeReading getReading() = 0;
 };

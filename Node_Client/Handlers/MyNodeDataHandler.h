@@ -1,15 +1,17 @@
 #pragma once
-#include "../Handlers/NodeDataHandler.h"
-#include "../Connections/MyServerConnection.h"
-class MyNodeDataHandler : public NodeDataHandler {
+#include "../Handlers/INodeDataHandler.h"
+#include "../Connections/IServerConnection.h"
+class MyNodeDataHandler : public INodeDataHandler {
 private:
-	MyServerConnection serverConnection;
+	IServerConnection *serverConnection;
 public:
-	MyNodeDataHandler(MyServerConnection serverConnection) {
-		this->serverConnection = serverConnection;
+	MyNodeDataHandler(IServerConnection *serverService)
+		: serverConnection(serverService) {
+		if (serverService == nullptr)
+			throw std::invalid_argument("Server Service must not be null");
 	}
 	NodeReading getReading() override {
 		_sleep(1000);
-		return serverConnection.getData();
+		return serverConnection->getData();
 	}
 };

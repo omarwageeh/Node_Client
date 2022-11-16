@@ -1,10 +1,10 @@
 #pragma once
-#include "ServerConnection.h"
-class MyServerConnection : public ServerConnection {
+#include "../Connections/IServerConnection.h"
+class MyServerConnection : public IServerConnection {
 public:
 	MyServerConnection() = default;
 
-	 NodeReading getData() override{
+	 NodeReading getData() {
 		NodeReading nodeReading;
 		nodeReading.reading = float(rand()%101)/((rand()%100)+1);
 		time_t now = time(0); // get current time;
