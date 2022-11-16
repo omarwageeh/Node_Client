@@ -13,7 +13,7 @@ int main()
 	INodeDataHandler *nodeData =  new MyNodeDataHandler(connection);
 	//Start program start
 
-	int accumulated = 0;
+	float accumulated = 0;
 	float avg;
 	for (int i = 1;;i++) {
 		vector<NodeReading> buffer(5);
@@ -26,7 +26,7 @@ int main()
 		avg = accumulated / i;
 		std::cout << "Averagre Reading in Celesius = " << avg << "C ---- Accumulated Reading = " << accumulated << " ---- TimeStamp of Last Reading "<< buffer[4].timeStamp << endl;
 		
-		if (accumulated >= INT_MAX - 100 && accumulated <= INT_MIN+100) { //preventing accumulated from overflowing
+		if (accumulated >= FLT_MAX - 100 && accumulated <= FLT_MIN + 100) { //preventing accumulated from overflowing
 			//Start all over
 			accumulated = 0;
 			avg = 0;
